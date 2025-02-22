@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Web I PRIM25</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header, footer{
+            background: purple;
+            color: white;
+            padding: 10px 0;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .content{
+            display: flex;
+            align-items: flex-start;
+        }
+        .mapa{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .fila{
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .mapa img{
+            margin: 5px;
+            cursor: pointer;
+            width: 150px;
+            height: auto;
+        }
+        iframe{
+            width: 70%;
+            height: 350px;
+            border: 1px solid black;
+        }
+        address{
+            font-style: italic;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function pagina(url) {
+            document.getElementById('mapaFrame').src = url;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Programación Web I PRIM25</h1>
+    </header>
+    <section>
+        <h2>Examen Práctico Parcial 1</h2>
+        <h2>Profesora: M.C. Imelda Deyanira Hernández Martínez</h2>
+        <h2>Alumno: Santiago Obregón Reynoso</h2>
+        <div class="container">
+            <div class="content">
+                <div class="mapa">
+                    <img src="sanluis.jpg" alt="San Luis">
+                    
+                </div>
+                <iframe id="mapaFrame" src="" frameborder="0" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="fila">
+            <img src="teatro.jpg" alt="Teatro de la Paz" onclick="pagina('https://es.wikipedia.org/wiki/Teatro_de_la_Paz_(San_Luis_Potos%C3%AD)')">
+            <img src="real14.jpg" alt="Real de Catorce" onclick="pagina('https://es.wikipedia.org/wiki/Real_de_Catorce')">
+            <img src="catedral.jpg" alt="Catedral de San Luis" onclick="pagina('https://es.wikipedia.org/wiki/Catedral_Metropolitana_de_San_Luis_Potos%C3%AD')">
+        </div>
+    </section>    
+    <footer>
+        Universidad Politécnica de San Luis Potosí
+      </footer>
+      <address>
+          Contacto: 184236@uplsp.edu.mx
+      </address>
+  </body>
+  </html>
