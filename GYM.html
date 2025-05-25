@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Fit - Feel Good Fitness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFD700; 
+            --secondary-color: #000000; 
+            --text-color: #333333;
+            --light-color: #f8f8f8;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-dark {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .half-width {
+            width: 48%;
+        }
+
+        .trial-form {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+        }
+
+        .checkbox-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input {
+            margin-right: 0.5rem;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e6c200;
+        }
+
+        /* Galería */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Estilos FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .faq-question {
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: white;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1rem 1rem;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            width: 30%;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-section, .half-width {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">SMART FIT</div>
+            <nav>
+                <ul>
+                    <li><a href="Ubicaciones.html">Ubicaciones</a></li>
+                    <li><a href="porque-smartfit.html">Porque Smart Fit</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content container">
+            <h1>Feel Good Fitness</h1>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Siéntete Apoyado Con Smart Fit</h2>
+            <div class="section-content">
+                <div class="half-width">
+                    <p>Con acceso mundial las 24 horas, los 7 días de la semana, contratos mensuales, entrenamiento personal, una variedad de equipos y un entorno agradable, Smart Fit es el gimnasio adecuado para ti.</p>
+                </div>
+                <div class="half-width">
+                    <h3>Ayudamos A Crear Hábitos De Vida Positivos</h3>
+                    <p>Tenemos la misión de ayudar a las personas a crear hábitos de vida positivos que los hagan sentir fantásticos. ¡En Smart Fit, todo se trata de sensaciones!</p>
+                    <button class="submit-btn">Encuentra Un Gimnasio</button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Pruébanos</h2>
+            <div class="section-content">
+                <div class="half-width">
+                    <p>Sí, estoy interesado en Smart Fit y me gustaría venir a probar el ambiente con un entrenamiento de prueba gratuito.</p>
+                </div>
+                <div class="half-width">
+                    <form class="trial-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre *</label>
+                            <input type="text" id="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido *</label>
+                            <input type="text" id="apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Número de teléfono *</label>
+                            <input type="tel" id="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comentario">Comentario</label>
+                            <textarea id="comentario"></textarea>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="email-notifications">
+                            <label for="email-notifications">Email - Notificarme de las últimas ofertas y promociones</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="sms-notifications">
+                            <label for="sms-notifications">SMS - Notificarme de las últimas ofertas y promociones</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="privacy-policy" required>
+                            <label for="privacy-policy">He leído y acepto las políticas de privacidad del sitio web</label>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES MEJORADO -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Cómo me registro en Smart Fit? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Puedes registrarte en línea a través de nuestro sitio web o directamente en cualquier sede Smart Fit. Solo necesitas tu identificación, comprobante de domicilio y realizar el pago de tu membresía.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Cuáles son los horarios de los gimnasios? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Nuestros gimnasios están abiertos las 24 horas del día, los 7 días de la semana, incluidos festivos. Algunas áreas específicas como piscinas o clases grupales pueden tener horarios especiales.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Ofrecen entrenamiento personal? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Sí, contamos con entrenadores certificados disponibles para sesiones personalizadas. Puedes contratar este servicio adicional en recepción o a través de nuestra app.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo congelar mi membresía? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Sí, puedes congelar tu membresía hasta por 3 meses al año. Debes solicitarlo con 5 días de anticipación en recepción y presentar documentación que justifique la pausa (viaje, lesión, etc.).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué equipos tienen disponibles? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Contamos con:</p>
+                        <ul>
+                            <li>Área de cardio (trotadoras, elípticas, bicicletas)</li>
+                            <li>Máquinas de resistencia y peso libre</li>
+                            <li>Zona funcional (TRX, kettlebells, cuerdas)</li>
+                            <li>Área de stretching</li>
+                            <li>Estudios para clases grupales</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Hay vestidores y duchas? <i class="fas fa-chevron-down"></i></h3>
+                    <div class="faq-answer">
+                        <p>Todas nuestras sedes tienen vestidores completos con duchas, lockers (puedes traer tu candado o rentar uno) y secadores de pelo. Proporcionamos toallas pequeñas para el entrenamiento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE IMÁGENES -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1734668487893-d686f3c8d0cf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Entrenamiento">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=800&q=80" alt="Mujer en el gimnasio">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.istockphoto.com/id/1435820418/photo/portrait-of-active-and-dynamic-young-charming-woman-doing-sport-fitness-at-home.webp?a=1&b=1&s=612x612&w=0&k=20&c=Qwl-KOgX0ps5FGMBreyQSLwLKV4B6fYozelL6P_6SBQ=" alt="Cardio en caminadora">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://plus.unsplash.com/premium_photo-1670505062582-fdaa83c23c9e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z3ltfGVufDB8fDB8fHww" alt="Entrenamiento 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3ltfGVufDB8fDB8fHww" alt="Gimnasio vacío">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z3ltfGVufDB8fDB8fHww" alt="Entrenamiento 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://plus.unsplash.com/premium_photo-1661265933107-85a5dbd815af?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3ltfGVufDB8fDB8fHww" alt="Entrenamiento 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?auto=format&fit=crop&w=800&q=80" alt="Entrenamiento 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Redes Sociales</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/SmartFitMx/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/smartfitmx/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/SmartFitMx"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@SmartFit_Mexico"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@smartfit"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <p>Síguenos en redes sociales para estar al día con nuestras promociones.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +52 444 434 1777</li>
+                        <li><i class="fas fa-envelope"></i> 184236@upslp.edu.mx</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Urbano Villalón 500, 78360 San Luis Potosí, SLP</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Smart Fit. Todos los derechos reservados.</p>
+                <p>Proyecto académico realizado por estudiantes de la <strong>Universidad Politécnica de San Luis Potosí (UPSLP)</strong>.</p>
+                <p><a href="#">Términos de Servicio</a> | <a href="#">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Cerrar otros items abiertos
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+    document.querySelector('.trial-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const nombre = document.getElementById('nombre').value;
+        const apellido = document.getElementById('apellido').value;
+        const email = document.getElementById('email').value;
+        const telefono = document.getElementById('telefono').value;
+        const comentario = document.getElementById('comentario').value;
+        const emailNot = document.getElementById('email-notifications').checked ? "Sí" : "No";
+        const smsNot = document.getElementById('sms-notifications').checked ? "Sí" : "No";
+        const privacidad = document.getElementById('privacy-policy').checked ? "Aceptado" : "No aceptado";
+
+        doc.setFontSize(14);
+        doc.text("Formulario de Prueba - Smart Fit", 20, 20);
+        doc.text(`Nombre: ${nombre}`, 20, 40);
+        doc.text(`Apellido: ${apellido}`, 20, 50);
+        doc.text(`Email: ${email}`, 20, 60);
+        doc.text(`Teléfono: ${telefono}`, 20, 70);
+        doc.text(`Comentario: ${comentario || "Ninguno"}`, 20, 80);
+        doc.text(`Notificaciones por Email: ${emailNot}`, 20, 90);
+        doc.text(`Notificaciones por SMS: ${smsNot}`, 20, 100);
+        doc.text(`Política de Privacidad: ${privacidad}`, 20, 110);
+
+        doc.save(`smartfit_formulario_${nombre}_${apellido}.pdf`);
+    });
+</script>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7ezmjbkefaURSgdHyEX-j";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicaciones - Smart Fit</title>
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #000000;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--primary-color);
+            color: #000;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+        }
+        
+        .header-container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 45px;
+            color: var(--secondary-color);
+            font-family: Arial, Helvetica, sans-serif;
+        }   
+        
+        .mapa1 {
+            display: flex;   
+            margin-top: 10px;
+            margin-left: 120px;
+        }
+        
+        .mapa2 {
+            display: flex;
+            margin-left: 15px;
+        }
+        
+        .mapa3 {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            margin-left: 450px;
+        }
+        
+        @media (max-width: 1200px) {
+            .mapa1, .mapa3 {
+                margin-left: 10px;
+                flex-direction: column;
+            }
+            
+            .mapa2 {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            iframe {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">SMAR FIT </div>
+            <nav>
+                <ul>
+                    <li><a href="GYM.html">Inicio</a></li>
+                    <li><a href="porque-smartfit.html">Porque Smar Fit</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <h1>UBICACIONES</h1>
+    <div class="mapa1">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29563.75887840903!2d-100.99190398945181!3d22.14617985702236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842aa38518aae639%3A0xf657d560decbec65!2sGimnasio%20Smart%20Fit%20-%20R%C3%ADo%20Verde%20San%20Luis%20Potos%C3%AD!5e0!3m2!1ses!2smx!4v1744080032317!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="mapa2">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29565.4631151445!2d-101.0387056256836!3d22.138063199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842a99c447ce9a31%3A0xe7552ff998b3fb5a!2sGimnasio%20Smart%20Fit%20-%20Citadella!5e0!3m2!1ses!2smx!4v1744080466055!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <div class="mapa3">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29565.4631151445!2d-101.0387056256836!3d22.138063199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842a9f4315463281%3A0x71e91d35e0c82ae8!2sGimnasio%20Smart%20Fit%20-%20El%20Dorado!5e0!3m2!1ses!2smx!4v1744081030237!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
+      <footer>
+            <div class="copyright">
+                <p>&copy; 2025 Smart Fit. Todos los derechos reservados.</p>
+                <p>Proyecto académico realizado por estudiantes de la <strong>Universidad Politécnica de San Luis Potosí (UPSLP)</strong>.</p>
+                <p><a href="#">Términos de Servicio</a> | <a href="#">Política de Privacidad</a></p>
+            </div>
+        </div>
+        <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7ezmjbkefaURSgdHyEX-j";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+      
+</body>
+</html>

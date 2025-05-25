@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Por Qué Smar Fit</title>
+    <style>
+        :root {
+            --primary-color: #FFD700; /* Amarillo */
+            --secondary-color: #000000; /* Negro */
+            --text-color: #333333;
+            --light-color: #f8f8f8;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .main-content {
+            padding: 4rem 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+        
+        .section-subtitle {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
+        }
+        
+        .divider {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e6c200;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">SMART FIT </div>
+            <nav>
+                <ul>
+                    <li><a href="GYM.html">Inicio</a></li>
+                    <li><a href="ubicaciones.html">Ubicaciones</a></li>
+                    <li><a href="porque-smartfit.html">Porque Smart Fit</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <h1 class="section-title">Nuestro Enfoque En Fitness</h1>
+        <p class="text-center">¡Estamos aquí para ayudarte a sentirte en forma y saludable las 24 horas del día, los 7 días de la semana!</p>
+        
+        <hr class="divider">
+        
+        <h2 class="section-subtitle">EJERCITA TU CUERPO Y MENTE</h2>
+        <p>Creemos que el ejercicio debe ser #ForTheFeeling. Está científicamente comprobado que puede mejorar tu estado de ánimo, reducir el estrés, la ansiedad, la depresión, aumentar el autoestima y desarrollar la concentración, lo que en general mejorará tu vida.</p>
+        
+        <hr class="divider">
+        
+        <h2 class="section-subtitle">AMBIENTE DE APOYO</h2>
+        <p>Desde el momento en que te unes, te respaldamos! Te ayudaremos a establecer tus objetivos personales y alcanzarlos, realizando un seguimiento de tu progreso y celebrando cada victoria.</p>
+        
+        <hr class="divider">
+        
+        <h2 class="section-subtitle">GIMNASIOS INCLUSIVOS</h2>
+        <p>No importa quién seas o qué tipo de movimiento disfrutes más. Smar Fit te acompaña en cada paso del camino. Creemos que el fitness no tiene límites y nos esforzamos por hacer de nuestros gimnasios un lugar inclusivo para todos.</p>
+        
+        <hr class="divider">
+        
+        <h1 class="section-title">¡Estamos Aquí Para Ti!</h1>
+        <p class="text-center">Ofrecemos la experiencia de acondicionamiento físico más abierta, inclusiva, empática y de apoyo para todos los miembros en todos los niveles. Tanto si eres un principiante absoluto como si haces ejercicio con regularidad, nuestros gimnasios son espacios en los que te sentirás cómodo.</p>
+        
+        <div class="text-center">
+            <a href="GYM.html" class="cta-button">Únete Ahora</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div>
+            <p>&copy; 2025 Smart Fit. Todos los derechos reservados.</p>
+            <p>Términos de Servicio | Política de Privacidad</p>
+        </div>
+    </footer>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7ezmjbkefaURSgdHyEX-j";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+   
+</body>
+</html>

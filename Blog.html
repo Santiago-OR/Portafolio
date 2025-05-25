@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Opiniones - Smart Fit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #000000;
+            --text-color: #333333;
+            --light-color: #f8f8f8;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .post {
+            background-color: #1e1e1e;
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .post h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .post p {
+            color: #ffffff;
+        }
+
+        .post-meta {
+            font-size: 0.8em;
+            color: #aaaaaa;
+        }
+
+        .comment-form {
+            background-color: #1e1e1e;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .comment-form h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--primary-color);
+            background-color: #2a2a2a;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e6c200;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">SMART FIT</div>
+            <nav>
+                <ul>
+                    <li><a href="GYM.html">Inicio</a></li>
+                    <li><a href="ubicaciones.html">Ubicaciones</a></li>
+                    <li><a href="porque-smartfit.html">Porque Smart Fit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="comment-form">
+            <h2>Deja tu opinión</h2>
+            <form id="opinionForm">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="title">Título de tu opinión:</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="opinion">Tu opinión:</label>
+                    <textarea id="opinion" required></textarea>
+                </div>
+                <button type="submit">Publicar Opinión</button>
+            </form>
+        </div>
+
+        <h2 style="color: var(--primary-color); text-align: center;">Opiniones Recientes</h2>
+        <div id="posts"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Fit. Todos los derechos reservados.</p>
+        <p>Proyecto académico realizado por estudiantes de la <strong>Universidad Politécnica de San Luis Potosí (UPSLP)</strong>.</p>
+    </footer>
+
+    <script>
+        document.getElementById('opinionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const title = document.getElementById('title').value;
+            const opinion = document.getElementById('opinion').value;
+
+            const postsContainer = document.getElementById('posts');
+            const newPost = document.createElement('div');
+            newPost.className = 'post';
+
+            const date = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = date.toLocaleDateString('es-ES', options);
+
+            newPost.innerHTML = `
+                <h3>${title}</h3>
+                <p class="post-meta">Publicado por ${name} el ${formattedDate}</p>
+                <p>${opinion}</p>
+            `;
+
+            postsContainer.appendChild(newPost);
+            document.getElementById('opinionForm').reset();
+            alert('¡Gracias por compartir tu opinión!');
+        });
+    </script>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="7ezmjbkefaURSgdHyEX-j";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>
